@@ -27,11 +27,11 @@ public class RarityLibMod implements ModInitializer, GameStartEntrypoint, Recipe
 	@Override
 	public void beforeGameStart() {
 
-		testItem = ItemHelper.createItem(MOD_ID, new Item(140), "testitem", "test.png");
-		CreativeHelper.setPriority(testItem,1000);
+		//testItem = ItemHelper.createItem(MOD_ID, new Item(140), "testitem", "test.png");
+		//CreativeHelper.setPriority(testItem,1000);
 
-		IItemMixin mixinItem = (IItemMixin) testItem;
-		mixinItem.rarityLib$setRarityLevel(RarityLevel.COMMON);
+		//IItemMixin mixinItem = (IItemMixin) testItem;
+		//mixinItem.rarityLib$setRarityLevel(RarityLevel.COMMON);
 
 
 	}
