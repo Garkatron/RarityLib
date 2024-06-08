@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "rarity_lib",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This mod aims to help new BTA modders.",
+  "name": "Rarity Lib",
+  "description": "Rarity levels for all items.",
   "authors": [
-    "Turnip Labs"
+    "@Garkatron"
   ],
   "contact": {
     "homepage": "",
@@ -19,20 +19,23 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-			"turniplabs.examplemod.ExampleMod"
+      "deus.rarity.RarityLibMod"
     ],
 		"beforeGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"deus.rarity.RarityLibMod"
+
 		],
 		"afterGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"deus.rarity.RarityLibMod"
+
 		],
 		"recipesReady": [
-			"turniplabs.examplemod.ExampleMod"
+			"deus.rarity.RarityLibMod"
+
 		]
 	},
   "mixins": [
-      "examplemod.mixins.json"
+		"rarity_lib.mixins.json"
   ],
 
   "depends": {
