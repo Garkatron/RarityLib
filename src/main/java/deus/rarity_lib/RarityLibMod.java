@@ -1,37 +1,38 @@
-package deus.rarity;
+package deus.rarity_lib;
 
-
-import deus.rarity.interfaces.IItemMixin;
-import deus.rarity.mixin.MixinRarityItem;
+import deus.rarity_lib.Config.ModConfig;
+import deus.rarity_lib.items.ItemMagnifyingGlass;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.item.Item;
-import org.lwjgl.Sys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.helper.CreativeHelper;
-import turniplabs.halplibe.helper.ItemHelper;
+import turniplabs.halplibe.helper.ItemBuilder;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
+import static deus.rarity_lib.tools.ItemUtils.makeItem;
+
 
 public class RarityLibMod implements ModInitializer, GameStartEntrypoint, RecipeEntrypoint {
-    public static final String MOD_ID = "rarity_levels";
+    public static final String MOD_ID = "rarity_lib";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     @Override
     public void onInitialize() {
-        LOGGER.info("ExampleMod initialized.");
+        LOGGER.info("Rarity Lib initialized.");
     }
 
-	public static Item testItem;
+	ModConfig confing = new ModConfig();
+	public static final ItemBuilder GenericItemBuilder = new ItemBuilder(MOD_ID);
+	public static Item magnifying_glass;
+
+
 
 	@Override
 	public void beforeGameStart() {
 
-		//testItem = ItemHelper.createItem(MOD_ID, new Item(140), "testitem", "test.png");
-		//CreativeHelper.setPriority(testItem,1000);
-
-		//IItemMixin mixinItem = (IItemMixin) testItem;
-		//mixinItem.rarityLib$setRarityLevel(RarityLevel.COMMON);
+		magnifying_glass = makeItem(new ItemMagnifyingGlass("magnifying_glass",confing.newItemID()),RarityLevel.COMMON);
+		CreativeHelper.setPriority(magnifying_glass,1000);
 
 
 	}
