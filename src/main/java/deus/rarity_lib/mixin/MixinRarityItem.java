@@ -1,7 +1,7 @@
 package deus.rarity_lib.mixin;
 
 import deus.rarity_lib.RarityLevel;
-import deus.rarity_lib.interfaces.IItemRarityMixin;
+import deus.rarity_lib.Interfaces.mixin.IItemRarityMixin;
 import net.minecraft.core.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
