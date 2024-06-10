@@ -1,4 +1,4 @@
-package deus.rarity;
+package deus.rarity_lib;
 
 public enum RarityLevel {
 	COMMON,

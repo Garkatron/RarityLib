@@ -19,18 +19,18 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "deus.rarity.RarityLibMod"
+      "deus.rarity_lib.RarityLibMod"
     ],
 		"beforeGameStart": [
-			"deus.rarity.RarityLibMod"
+			"deus.rarity_lib.RarityLibMod"
 
 		],
 		"afterGameStart": [
-			"deus.rarity.RarityLibMod"
+			"deus.rarity_lib.RarityLibMod"
 
 		],
 		"recipesReady": [
-			"deus.rarity.RarityLibMod"
+			"deus.rarity_lib.RarityLibMod"
 
 		]
 	},
