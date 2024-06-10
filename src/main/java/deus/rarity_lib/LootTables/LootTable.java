@@ -1,20 +1,17 @@
 package deus.rarity_lib.LootTables;
 
 import net.minecraft.core.WeightedRandomLootObject;
-import net.minecraft.core.entity.monster.EntityZombie;
 import net.minecraft.core.item.Item;
-import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.item.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import java.util.concurrent.ThreadLocalRandom;
 
 public class LootTable {
 
-	private Map<Integer, WeightedRandomLootObject> objectsWithProbability;
 	private final ThreadLocalRandom rng = ThreadLocalRandom.current();
+	private final Map<Integer, WeightedRandomLootObject> objectsWithProbability;
 
 	public LootTable() {
 		this.objectsWithProbability = new HashMap<>();
@@ -42,7 +39,7 @@ public class LootTable {
 		if (totalProbability > 100) {
 			throw new IllegalArgumentException("Total probability cannot exceed 100%");
 		}
-		objectsWithProbability.put(probability, new WeightedRandomLootObject( item.getDefaultStack() ,min_quenty, max_quenty));
+		objectsWithProbability.put(probability, new WeightedRandomLootObject(item.getDefaultStack(), min_quenty, max_quenty));
 	}
 
 	public ItemStack getRandomItemWithProbability() {

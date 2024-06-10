@@ -1,9 +1,0 @@
-package deus.rarity_lib.Interfaces;
-
-
-import net.minecraft.core.player.inventory.IInventory;
-
-public interface IPlayerRarityMixin {
-	void displayGUIMagnifyingGlass(IInventory inventory);
-
-}
