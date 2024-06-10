@@ -9,6 +9,7 @@ import static deus.rarity_lib.RarityLibMod.MOD_ID;
 
 public class ModConfig {
 
+	private static ConfigHandler config;
 	private int BLOCK_ID;
 	private int ITEM_ID;
 
@@ -27,6 +28,10 @@ public class ModConfig {
 		return ITEM_ID;
 	}
 
+	public int getInt(String prop) {
+		return config.getInt(prop);
+	}
+
 	public ModConfig() {
 		Properties prop = new Properties();
 
@@ -38,7 +43,10 @@ public class ModConfig {
 		//Debug.println("FISHING ADDITIONS MOD CONFIG: PRE STARTING ITEM ID: " + STARTING_ITEM_ID);
 		prop.setProperty("starting_item_id", String.valueOf(STARTING_ITEM_ID));
 
-		ConfigHandler config = new ConfigHandler(MOD_ID, prop);
+		prop.setProperty("magnifying_gui_id", "116");
+
+
+		config = new ConfigHandler(MOD_ID, prop);
 
 		// Leer los valores de la configuración, usando valores predeterminados si no están presentes
 		BLOCK_ID = config.getInt("starting_block_id");

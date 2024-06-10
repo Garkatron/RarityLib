@@ -1,7 +1,6 @@
 package deus.rarity_lib;
 
 import deus.rarity_lib.Config.ModConfig;
-import deus.rarity_lib.items.ItemMagnifyingGlass;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.item.Item;
 import org.slf4j.Logger;
@@ -11,7 +10,7 @@ import turniplabs.halplibe.helper.ItemBuilder;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
-import static deus.rarity_lib.tools.ItemUtils.makeItem;
+import static deus.rarity_lib.Tools.ItemUtils.makeItem;
 
 
 public class RarityLibMod implements ModInitializer, GameStartEntrypoint, RecipeEntrypoint {
@@ -22,7 +21,7 @@ public class RarityLibMod implements ModInitializer, GameStartEntrypoint, Recipe
         LOGGER.info("Rarity Lib initialized.");
     }
 
-	ModConfig confing = new ModConfig();
+	public static ModConfig config = new ModConfig();
 	public static final ItemBuilder GenericItemBuilder = new ItemBuilder(MOD_ID);
 	public static Item magnifying_glass;
 
@@ -31,7 +30,7 @@ public class RarityLibMod implements ModInitializer, GameStartEntrypoint, Recipe
 	@Override
 	public void beforeGameStart() {
 
-		magnifying_glass = makeItem(new ItemMagnifyingGlass("magnifying_glass",confing.newItemID()),RarityLevel.COMMON);
+		magnifying_glass = makeItem(new ItemMagnifyingGlass("magnifying_glass", config.newItemID()),RarityLevel.COMMON);
 		CreativeHelper.setPriority(magnifying_glass,1000);
 
 

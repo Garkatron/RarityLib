@@ -1,4 +1,4 @@
-package deus.rarity_lib.interfaces;
+package deus.rarity_lib.Interfaces;
 
 import deus.rarity_lib.RarityLevel;
 

@@ -1,7 +1,6 @@
 package deus.rarity_lib.mixin;
 
-import deus.rarity_lib.GUIs.MagnifyingGlassGui;
-import deus.rarity_lib.interfaces.IPlayerRarityMixin;
+import deus.rarity_lib.Interfaces.IPlayerRarityMixin;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.EntityPlayerSP;
 import net.minecraft.core.player.inventory.IInventory;
@@ -19,7 +18,10 @@ public class MixinRarityPlayerSP implements IPlayerRarityMixin {
 
 	@Override
 	public void displayGUIMagnifyingGlass(IInventory inventory) {
-		mc.displayGuiScreen(new MagnifyingGlassGui(this.mc.thePlayer.inventory, inventory));
+		//mc.displayGuiScreen(new MagnifyingGlassGui(mc.thePlayer, inventory));
 
 	}
 }
+
+"net/minecraft/client/entity/player/EntityPlayerSP": ["deus/rarity_lib/mixin/MixinRarityPlayerSP"],
+"net/minecraft/client/entity/player/EntityPlayerMP": ["deus/rarity_lib/mixin/MixinRarityPlayerMP"],

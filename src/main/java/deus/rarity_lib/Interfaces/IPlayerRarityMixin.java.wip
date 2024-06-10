@@ -1,4 +1,4 @@
-package deus.rarity_lib.interfaces;
+package deus.rarity_lib.Interfaces;
 
 
 import net.minecraft.core.player.inventory.IInventory;

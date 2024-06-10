@@ -1,7 +1,7 @@
-package deus.rarity_lib.tools;
+package deus.rarity_lib.Tools;
 
 import deus.rarity_lib.RarityLevel;
-import deus.rarity_lib.interfaces.IItemRarityMixin;
+import deus.rarity_lib.Interfaces.IItemRarityMixin;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemFood;
 
