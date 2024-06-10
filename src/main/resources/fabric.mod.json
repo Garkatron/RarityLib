@@ -34,6 +34,7 @@
 
 		]
 	},
+
   "mixins": [
 		"rarity_lib.mixins.json"
   ],
