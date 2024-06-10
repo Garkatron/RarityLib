@@ -4,8 +4,7 @@ import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class LootTable {
@@ -21,14 +20,19 @@ public class LootTable {
 		this.objectsWithProbability = items;
 	}
 
+	/*
 	public Item getRandomItem() {
 		if (objectsWithProbability.isEmpty()) {
 			throw new IllegalStateException("No items in the loot table");
 		}
 
+
 		int randomIndex = rng.nextInt(objectsWithProbability.size());
-		return (Item) objectsWithProbability.values().toArray()[randomIndex];
+		Item p = objectsWithProbability.get();
+
+		return
 	}
+	 */
 
 
 	public void addItemWithProbability(int probability, Item item, int min_quenty, int max_quenty) {
@@ -48,13 +52,19 @@ public class LootTable {
 		}
 		int n = rng.nextInt(1, 101);
 		int cumulativeProbability = 0;
-		for (int probability : objectsWithProbability.keySet()) {
+		List<Integer> probabilities = new ArrayList<>(objectsWithProbability.keySet());
+		Collections.shuffle(probabilities);
+		for (int probability : probabilities) {
 			cumulativeProbability += probability;
 			if (n <= cumulativeProbability) {
 				ItemStack stack = objectsWithProbability.get(probability).getItemStack();
 				return new ItemStack(stack.itemID, 1, stack.getMetadata(), stack.getData());
 			}
 		}
-		return null;
+		// Si no se ha seleccionado ningún elemento, devolvemos el último elemento de la loot table
+		int lastProbability = probabilities.get(probabilities.size() - 1);
+		ItemStack lastItemStack = objectsWithProbability.get(lastProbability).getItemStack();
+		System.out.println("¡Atención! No se ha encontrado ningún elemento con probabilidad positiva en la loot table. Devolviendo el último elemento de la tabla.");
+		return new ItemStack(lastItemStack.itemID, 1, lastItemStack.getMetadata(), lastItemStack.getData());
 	}
 }
