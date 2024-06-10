@@ -1,5 +1,6 @@
 package deus.rarity_lib.LootTables;
 
+import deus.rarity_lib.Tools.Debug.Debug;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
@@ -51,12 +52,22 @@ public class LootTable {
 			throw new IllegalStateException("No items in the loot table");
 		}
 		int n = rng.nextInt(1, 101);
+
+		Debug.println("N: "+ n);
+
+
 		int cumulativeProbability = 0;
 		List<Integer> probabilities = new ArrayList<>(objectsWithProbability.keySet());
 		Collections.shuffle(probabilities);
 		for (int probability : probabilities) {
 			cumulativeProbability += probability;
+
+			Debug.println("CumulativeProbability: "+ cumulativeProbability);
+
 			if (n <= cumulativeProbability) {
+
+				Debug.println("N: "+ n);
+
 				ItemStack stack = objectsWithProbability.get(probability).getItemStack();
 				return new ItemStack(stack.itemID, 1, stack.getMetadata(), stack.getData());
 			}
@@ -64,7 +75,9 @@ public class LootTable {
 		// Si no se ha seleccionado ningún elemento, devolvemos el último elemento de la loot table
 		int lastProbability = probabilities.get(probabilities.size() - 1);
 		ItemStack lastItemStack = objectsWithProbability.get(lastProbability).getItemStack();
+
 		System.out.println("¡Atención! No se ha encontrado ningún elemento con probabilidad positiva en la loot table. Devolviendo el último elemento de la tabla.");
+
 		return new ItemStack(lastItemStack.itemID, 1, lastItemStack.getMetadata(), lastItemStack.getData());
 	}
 }
