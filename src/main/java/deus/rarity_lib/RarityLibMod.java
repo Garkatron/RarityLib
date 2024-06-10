@@ -30,8 +30,8 @@ public class RarityLibMod implements ModInitializer, GameStartEntrypoint, Recipe
 	@Override
 	public void beforeGameStart() {
 
-		magnifying_glass = makeItem(new ItemMagnifyingGlass("magnifying_glass", config.newItemID()),RarityLevel.COMMON);
-		CreativeHelper.setPriority(magnifying_glass,1000);
+		//magnifying_glass = makeItem(new ItemMagnifyingGlass("magnifying_glass", config.newItemID()),RarityLevel.COMMON);
+		//CreativeHelper.setPriority(magnifying_glass,1000);
 
 
 	}

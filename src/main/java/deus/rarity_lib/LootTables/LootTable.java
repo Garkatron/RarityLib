@@ -55,7 +55,7 @@ public class LootTable {
 			cumulativeProbability += probability;
 			if (n <= cumulativeProbability) {
 				ItemStack stack = objectsWithProbability.get(probability).getItemStack();
-				return new ItemStack(stack.itemID, 1, stack.getMetadata(), stack.getData();
+				return new ItemStack(stack.itemID, 1, stack.getMetadata(), stack.getData());
 			}
 		}
 		return null;
