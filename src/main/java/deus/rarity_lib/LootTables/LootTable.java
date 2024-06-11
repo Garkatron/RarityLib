@@ -61,7 +61,7 @@ public class LootTable {
 
 		for (Map.Entry<Integer, WeightedRandomLootObject> entry : objectsWithProbability.entrySet()) {
  			comulative_probability +=  entry.getKey();
-		 	if (randomInt <= comulative_probability) {
+		 	if (randomInt < comulative_probability) {
 				ItemStack stack = entry.getValue().getItemStack();
 				return new ItemStack(stack.itemID, 1, stack.getMetadata(), stack.getData());
 			}
