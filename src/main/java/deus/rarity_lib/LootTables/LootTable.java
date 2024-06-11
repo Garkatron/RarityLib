@@ -56,8 +56,9 @@ public class LootTable {
 	}
 
 	public ItemStack getRandomItemWithProbability() {
+		int totalProbability = objectsWithProbability.keySet().stream().mapToInt(Integer::intValue).sum();
+		int randomInt = rng.nextInt(totalProbability);
 		int comulative_probability = 0;
-		int randomInt = rng.nextInt(objectsWithProbability.size());
 
 		for (Map.Entry<Integer, WeightedRandomLootObject> entry : objectsWithProbability.entrySet()) {
  			comulative_probability +=  entry.getKey();
