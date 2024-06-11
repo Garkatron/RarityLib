@@ -11,14 +11,25 @@ import java.util.concurrent.ThreadLocalRandom;
 public class LootTable {
 
 	private final ThreadLocalRandom rng = ThreadLocalRandom.current();
-	private final Map<Float, WeightedRandomLootObject> objectsWithProbability;
+	private final Map<Integer, WeightedRandomLootObject> objectsWithProbability;
 
 	public LootTable() {
-		this.objectsWithProbability = new HashMap<Float, WeightedRandomLootObject>();
+		this.objectsWithProbability = new HashMap<Integer, WeightedRandomLootObject>();
 	}
 
-	public LootTable(Map<Float, WeightedRandomLootObject> items) {
+	public LootTable(Map<Integer, WeightedRandomLootObject> items) {
 		this.objectsWithProbability = items;
+	}
+
+	public ItemStack getRandomItemStack() {
+		if (objectsWithProbability.isEmpty()) {
+			throw new IllegalStateException("No items in the loot table");
+		}
+
+		int randomIndex = rng.nextInt(objectsWithProbability.size());
+		ItemStack stack =  ((WeightedRandomLootObject)objectsWithProbability.values().toArray()[randomIndex]).getItemStack();
+		return new ItemStack(stack.itemID, 1, stack.getMetadata(), stack.getData());
+
 	}
 
 	public Item getRandomItem() {
@@ -27,16 +38,17 @@ public class LootTable {
 		}
 
 		int randomIndex = rng.nextInt(objectsWithProbability.size());
-		return (Item) objectsWithProbability.values().toArray()[randomIndex];
+		ItemStack stack =  ((WeightedRandomLootObject)objectsWithProbability.values().toArray()[randomIndex]).getItemStack();
+		return new ItemStack(stack.itemID, 1, stack.getMetadata(), stack.getData()).getItem();
+
 	}
 
-	public void addItemWithProbability(Float probability, Item item, int min_quantity, int max_quantity) {
+	public void addItemWithProbability(int probability, Item item, int min_quantity, int max_quantity) {
 		if (probability <= 0 || probability > 100) {
 			throw new IllegalArgumentException("Probability must be between 1 and 100");
 		}
-		float totalProbability = (float) objectsWithProbability.keySet().stream()
-			.mapToDouble(p -> p)
-			.sum() + probability;
+		int totalProbability = objectsWithProbability.keySet().stream().mapToInt(Integer::intValue).sum() + probability;
+
 		if (totalProbability > 100) {
 			throw new IllegalArgumentException("Total probability cannot exceed 100%");
 		}
@@ -44,19 +56,30 @@ public class LootTable {
 	}
 
 	public ItemStack getRandomItemWithProbability() {
-		if (objectsWithProbability.isEmpty()) {
+		int comulative_probability = 0;
+		int randomInt = rng.nextInt(objectsWithProbability.size());
+
+		for (Map.Entry<Integer, WeightedRandomLootObject> entry : objectsWithProbability.entrySet()) {
+ 			comulative_probability +=  entry.getKey();
+		 	if (randomInt <= comulative_probability) {
+				ItemStack stack = entry.getValue().getItemStack();
+				return new ItemStack(stack.itemID, 1, stack.getMetadata(), stack.getData());
+			}
+
+		}
+		return new ItemStack(Item.ammoArrow,1);
+	}
+}
+/*
+if (objectsWithProbability.isEmpty()) {
 			throw new IllegalStateException("No items in the loot table");
 		}
-		float n = rng.nextFloat() * 100;  // Adjusting to percentage scale
-
-		float cumulativeProbability = 0;
-		for (Map.Entry<Float, WeightedRandomLootObject> entry : objectsWithProbability.entrySet()) {
+	for (Map.Entry<Float, WeightedRandomLootObject> entry : objectsWithProbability.entrySet()) {
 			cumulativeProbability += entry.getKey();
 			if (n <= cumulativeProbability) {
 				ItemStack stack = entry.getValue().getItemStack();
 				return new ItemStack(stack.itemID, 1, stack.getMetadata(), stack.getData());
 			}
 		}
-		return null;
-	}
-}
+
+ */
