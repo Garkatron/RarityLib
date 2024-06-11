@@ -1,37 +1,46 @@
-# Example Mod
+# Rarity Lib
+## Description
+Help you implement rarity level to your items.
 
-Template for making Babric mods for BTA!
+## Import
+##### build.gradle
+```gradle
+repositories {
+   maven { url = "https://jitpack.io" }
+}
+dependencies {
+   modImplementation "com.github.Garkatron:RarityLib:${project.rarity_lib_version}"
+}
+```
+##### gradle.properties
+```gradle
+mod_version = release_tag_name
+```
 
-**Note: *DO NOT fork this repository unless you want to contribute!***
+## Usage
 
-## Prerequisites
-- JDK for Java 17 ([Eclipse Temurin](https://adoptium.net/temurin/releases/) recommended)
-- [Intellij IDEA](https://www.jetbrains.com/idea/download/) (Scroll down for the free community edition, if using linux **DO NOT** use the flatpak distribution)
-- Minecraft Development plugin (Optional, but highly recommended)
+### Example: How to add item with rarity level
+##### BTA 7.2pre1
+```java
+public static final ItemBuilder GenericItemBuilder = new ItemBuilder(MOD_ID);
+public static Item makeItem(int id, String name, RarityLevel rarity) {
+		Item item = GenericItemBuilder
+			.build(new Item(name, id));
 
-## Setup instructions
-   
+		((IItemRarityMixin) item).rarityLib$setRarityLevel(rarity);
+		return item;
+	}
+```
 
-1. Click the `Use this template` button on this repo's page above (Will only appear if logged in). Choose `Create a new repository`, you will be redirected to a new page. Enter your repo's name and description, and hit `Create repository`.  
-   To get your project, open IntelliJ IDEA and click `Get from VCS`. Select `Repository URL` and enter your repo's url
+### Example: How to add item with rarity level
+##### BTA 7.1_01
+```java
+public static final ItemBuilder GenericItemBuilder = new ItemBuilder(MOD_ID);
+public static Item makeItem(int id, String name, RarityLevel rarity) {
+		Item item = GenericItemBuilder
+			.build(new Item(name, id));
 
-2. After the project has finished importing, close it and open it again.  
-   If that does not work, open the right sidebar with `Gradle` on it, open `Tasks` > `fabric` and run `ideaSyncTask`.
-
-3. Create a new run configuration by going in `Run > Edit Configurations`.  
-   Then click on the plus icon and select Gradle. In the `Tasks and Arguments` field enter `build`.  
-   Running it will build your finished jar files and put them in `build/libs/`.
-
-4. Lastly, open `File` > `Settings` and head to `Build, Execution, Development` > `Build Tools` > `Gradle`.  
-   Make sure `Build and run using` and `Run tests using` is set to `Gradle`.
-
-5. Done! Now, all that's left is to change every mention of `examplemod` and `turniplabs` to your own mod id and mod group, respectively. Happy modding!
-
-## Tips
-
-1. If you haven't already you should join the BTA modding discord! https://discord.gg/FTUNJhswBT
-2. You can set your username when launching the client run configuration by setting `--username <username>` in your program arguments.
-3. When launching the server run configuration you may want to remove the `nogui` program argument in order to see the regular server GUI.
-4. In Intellij you can double press shift or press ctrl+N to search class files, change the search from the default `Project Files` to `All Places` you can easily explore the classes for you dependencies and even BTA itself.
-5. In Intellij if ctrl+left click on a field or method you can quickly get information on when and where that field or method is assign or used.
-
+		((IItemRarityMixin) item).rarityLib$setRarityLevel(rarity);
+		return item;
+	}
+```
