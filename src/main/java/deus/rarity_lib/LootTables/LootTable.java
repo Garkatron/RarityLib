@@ -15,6 +15,7 @@ public class LootTable {
 
 	public LootTable() {
 		this.objectsWithProbability = new HashMap<Integer, WeightedRandomLootObject>();
+
 	}
 
 	public LootTable(Map<Integer, WeightedRandomLootObject> items) {
@@ -70,7 +71,7 @@ public class LootTable {
 			previousKey = entry.getKey();
 		}
 
-		return null;
+		return getRandomItemWithProbability();
 	}
 
 
