@@ -56,24 +56,23 @@ public class LootTable {
 	}
 
 	public ItemStack getRandomItemWithProbability() {
-		double randomDouble = Math.random();
-		double totalProbability = objectsWithProbability.keySet().stream()
-			.mapToDouble(probability -> probability) // Assuming probabilities are already doubles
-			.sum();
-		double scaledRandom = randomDouble * totalProbability;
-		double cumulativeProbability = 0;
 
+		int totalProbability = objectsWithProbability.keySet().stream().mapToInt(Integer::intValue).sum();
+		int random = rng.nextInt(totalProbability);
+
+		int previousKey = -1;
 		for (Map.Entry<Integer, WeightedRandomLootObject> entry : objectsWithProbability.entrySet()) {
-			cumulativeProbability += entry.getKey();
-			if (scaledRandom <= cumulativeProbability) {
+			if (previousKey < random && random < entry.getKey()) {
 				ItemStack stack = entry.getValue().getItemStack();
-				return new ItemStack(stack.getItem(), 1, stack.getMetadata());
+				return new ItemStack(stack.itemID, 1, stack.getMetadata(), stack.getData());
+
 			}
+			previousKey = entry.getKey();
 		}
 
-		// Si no se ha seleccionado ningún objeto, se devuelve un elemento por defecto
-		return new ItemStack(Item.ammoArrow, 1);
+		return null;
 	}
+
 
 }
 /*
