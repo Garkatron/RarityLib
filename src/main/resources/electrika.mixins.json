@@ -1,10 +1,9 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "deus.rarity_lib.mixin",
+  "package": "deus.electrika.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinRarityItem"
 
   ],
   "client": [
