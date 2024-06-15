@@ -28,6 +28,8 @@ public class BlockInitializer {
 			.setHardness(1.0F)
 			.setResistance(1.0F)
 			.setTextures("electrika:block/battery")
+			.setTopTexture("electrika:block/top_battery")
+			.setBottomTexture("electrika:block/top_battery")
 			.setTags(BlockTags.MINEABLE_BY_PICKAXE);
 		;
 
@@ -38,6 +40,8 @@ public class BlockInitializer {
 			.setHardness(1.0F)
 			.setResistance(1.0F)
 			.setTextures("electrika:block/battery")
+			.setTopTexture("electrika:block/top_battery")
+			.setBottomTexture("electrika:block/top_battery")
 			.setTags(BlockTags.MINEABLE_BY_PICKAXE);
 		;
 
