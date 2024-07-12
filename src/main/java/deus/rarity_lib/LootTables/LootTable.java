@@ -46,15 +46,18 @@ public class LootTable {
 		if (objectsWithProbability.isEmpty()) {
 			throw new IllegalStateException("No items in the loot table");
 		}
-		int n = rng.nextInt(1, 101);
-		int cumulativeProbability = 0;
-		for (int probability : objectsWithProbability.keySet()) {
-			cumulativeProbability += probability;
-			if (n <= cumulativeProbability) {
-				ItemStack stack = objectsWithProbability.get(probability).getItemStack();
-				return new ItemStack(stack.itemID, 1, stack.getMetadata(), stack.getData());
-			}
+		int max = 101;
+		while (true) {
+    		int n = rng.nextInt(1, max);
+    		int cumulativeProbability = 0;
+    		for (int probability : objectsWithProbability.keySet()) {
+    			cumulativeProbability += probability;
+    			if (n <= cumulativeProbability) {
+    				ItemStack stack = objectsWithProbability.get(probability).getItemStack();
+    				return new ItemStack(stack.itemID, 1, stack.getMetadata(), stack.getData());
+    			}
+    		}
+    		max = cumulativeProbability - 1;
 		}
-		return null;
 	}
 }
