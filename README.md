@@ -1,3 +1,1 @@
-# Electrika
-## What is this?
-...
+# RarityLib
