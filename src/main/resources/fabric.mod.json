@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "electrika",
+  "id": "rarity_lib",
   "version": "${version}",
 
-  "name": "Electrika",
+  "name": "Rarity Lib",
   "description": "Rarity levels for all items.",
   "authors": [
     "@Garkatron"
@@ -19,27 +19,29 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "deus.electrika.ElectrikaMod"
+      "deus.rarity_lib.RarityLibMod"
     ],
 		"beforeGameStart": [
-			"deus.electrika.ElectrikaMod"
+			"deus.rarity_lib.RarityLibMod"
 
 		],
 		"afterGameStart": [
-			"deus.electrika.ElectrikaMod"
+			"deus.rarity_lib.RarityLibMod"
 
 		],
 		"recipesReady": [
-			"deus.electrika.ElectrikaMod"
+			"deus.rarity_lib.RarityLibMod"
 
 		]
 	},
 
   "mixins": [
-		"electrika.mixins.json"
+		"rarity_lib.mixins.json"
 	],
 	"custom": {
 		"loom:injected_interfaces": {
+
+			"net/minecraft/core/item/Item": ["deus/rarity_lib/Interfaces/mixin/IItemRarityMixin"]
 		}
 	},
 

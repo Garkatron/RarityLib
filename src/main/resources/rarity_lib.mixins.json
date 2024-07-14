@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "deus.rarity_lib.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinRarityItem"
+
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
