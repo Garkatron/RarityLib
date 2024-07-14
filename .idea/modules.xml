@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/RarityLib.iml" filepath="$PROJECT_DIR$/.idea/RarityLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RarityLib.main.iml" filepath="$PROJECT_DIR$/.idea/modules/RarityLib.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RarityLib.test.iml" filepath="$PROJECT_DIR$/.idea/modules/RarityLib.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bta-example-mod.main.iml" filepath="$PROJECT_DIR$/.idea/modules/bta-example-mod.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bta-example-mod.test.iml" filepath="$PROJECT_DIR$/.idea/modules/bta-example-mod.test.iml" />
     </modules>
   </component>
 </project>

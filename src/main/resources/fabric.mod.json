@@ -34,21 +34,14 @@
 
 		]
 	},
-
   "mixins": [
 		"rarity_lib.mixins.json"
-	],
-	"custom": {
-		"loom:injected_interfaces": {
+  ],
 
-			"net/minecraft/core/item/Item": ["deus/rarity_lib/Interfaces/mixin/IItemRarityMixin"]
-		}
-	},
-
-	"depends": {
-		"fabricloader": ">=0.13.3",
-		"halplibe": ">=4.0.5"
-	},
+  "depends": {
+		"minecraft": "~7.2-beta.2",
+    "fabricloader": ">=0.15.5"
+  },
   "suggests": {
   }
 }

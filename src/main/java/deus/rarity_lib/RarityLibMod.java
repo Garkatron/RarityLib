@@ -44,7 +44,7 @@ public class RarityLibMod implements ModInitializer, GameStartEntrypoint, Recipe
 			testItem = generic_item_builder.build(new Item("TEST", config.newItemID()));
 			CreativeHelper.setPriority(testItem, 1000);
 
-			IItemRarityMixin mixinItem = testItem;
+			IItemRarityMixin mixinItem = (IItemRarityMixin) testItem;
 			mixinItem.rarityLib$setRarityLevel(RarityLevel.COMMON);
 		});
 	}
